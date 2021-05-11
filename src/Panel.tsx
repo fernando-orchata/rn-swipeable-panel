@@ -270,7 +270,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
               this.props.children
             )}
           </ScrollView>
-          {this.props.footer && this.props.footer()}
+          {Boolean(this.props.footer) && this.props.footer()}
         </Animated.View>
       </Animated.View>
     ) : null;
