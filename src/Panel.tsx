@@ -194,7 +194,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
         this.setState({
           showComponent: false,
         });
-      } else this.setState({ canScroll: newStatus === STATUS.LARGE ? true : false });
+      } else this.setState({ canScroll: newStatus === STATUS.LARGE });
     });
   };
 
@@ -252,24 +252,7 @@ class SwipeablePanel extends Component<SwipeablePanelProps, SwipeablePanelState>
           {this.props.showCloseButton && (
             <Close rootStyle={closeRootStyle} iconStyle={closeIconStyle} onPress={this.props.onClose} />
           )}
-          <ScrollView
-            onTouchStart={() => {
-              return false;
-            }}
-            onTouchEnd={() => {
-              return false;
-            }}
-            contentContainerStyle={SwipeablePanelStyles.scrollViewContentContainerStyle}
-            {...this.props.scrollViewProps}
-          >
-            {this.state.canScroll ? (
-              <TouchableHighlight>
-                <React.Fragment>{this.props.children}</React.Fragment>
-              </TouchableHighlight>
-            ) : (
-              this.props.children
-            )}
-          </ScrollView>
+          {this.props.children}
           {Boolean(this.props.footer) && this.props.footer()}
         </Animated.View>
       </Animated.View>
